@@ -933,7 +933,7 @@ def show_ai_roadmap():
 st.header("🌍 Trip.com 客服系统深度分析")
 
 # 创建标签页
-tab1, tab2, tab3, tab4 = st.tabs(["📊 竞品分析", "👥 人力资源优化", "🚀 AI升级路线", "📈 思维导图：指标体系，AI升级, 成本分析"])
+tab1, tab2, tab3, tab4 = st.tabs(["📊 竞品分析", "🚀 AI升级路线", "👥 人力资源优化",  "📈 思维导图：指标体系，AI升级, 成本分析"])
 
 with tab1:
     show_market_share()
@@ -957,10 +957,10 @@ with tab1:
     """, unsafe_allow_html=True)
 
 with tab2:
-    show_predictive_staffing()
+    show_ai_roadmap()
 
 with tab3:
-    show_ai_roadmap()
+    show_predictive_staffing()
 
 with tab4:
     st.header("📊 客户满意度指标 + 客服渠道拆解 + 客服成本分析与优化")
