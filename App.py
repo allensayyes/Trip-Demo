@@ -24,56 +24,6 @@ def pdf_download_link(pdf_path, link_text="📄 点此下载"):
 
 
 
-# ========== 说明 ==========
-st.markdown(f"""
----
-### 📝 说明
-- 该 Demo 旨在直观呈现候选人以Senior Business Analyst的角色对携程国际业务（客服支持）的快速学习理解，并以此为切入点，激发正式面试中更深入的探讨与交流
-- 行业/竞对/历史数据来源于互联网公开信息，公开财报以及Trip.com 官方网站，存在一定误差，图表使用Plotly + HTML/CSS制作
-- 思维导图中大部分数字/权重为推断假设，使用基于JavaScript的代码可视化工具 - Mermaid制作，Draw.io美化 
-- 候选人相似过往项目经历（业务指标体系）请点击以下链接下载
-
-### 📋 开发日志
-<details>
-<summary><strong>点击展开查看开发历史</strong></summary>
-
-**v1.0 (初始版本2025-09-23)**
-- 基础思维导图展示 (Mermaid SVG)
-- 客户满意度指标 + 客服渠道拆解 + 客服成本分析
-
-**v2.0 (2025-09-25 更新)**
-- ✨ 新增竞品分析模块
-  - 海外OTA平台市场份额变化趋势 (面积图)
-  - 客服系统发展大事记 (折线图)
-  - 客服系统能力雷达图对比 (4个雷达图)
-- ✨ 新增预测性人力资源优化模块
-  - 炫酷思维导图展示优化模型
-  - 智能排班系统Demo界面
-- ✨ 新增AI客服升级路线图
-  - 项目进度管理甘特图
-  - 里程碑和关键指标展示
-- 🎨 界面优化
-  - 多标签页布局
-  - 统一携程蓝配色方案
-  - 响应式设计优化
-- 🔧 技术升级
-  - 从Mermaid迁移到Plotly + HTML/CSS
-  - 交互式图表支持
-  - 自定义tooltip和hover效果
-
-</details>
-""", unsafe_allow_html=True)
-
-# 假设你的 PDF 文件叫 "resume.pdf" 放在项目根目录
-with open("亚马逊项目 - 配送站评分系统.pdf", "rb") as f:
-    pdf_bytes = f.read()
-
-st.download_button(
-    label="📥 下载候选人相似过往项目经历",
-    data=pdf_bytes,
-    file_name="候选人项目经历.pdf",
-    mime="application/pdf"
-)
 
 # ========== 竞品分析功能 ==========
 def show_market_share():
@@ -933,9 +883,70 @@ def show_ai_roadmap():
 st.header("🌍 Trip.com 客服系统深度分析")
 
 # 创建标签页
-tab1, tab2, tab3, tab4 = st.tabs(["📊 竞品分析", "🚀 AI升级路线", "👥 人力资源优化",  "📈 思维导图：指标体系，AI升级, 成本分析"])
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["📋 项目说明", "📊 竞品分析", "🚀 AI升级路线", "👥 人力资源优化", "📋 工单数据分析", "📈 思维导图"])
 
 with tab1:
+    st.markdown(f"""
+    ### 📝 项目说明
+    - 该 Demo 旨在直观呈现候选人以Senior Business Analyst的角色对携程国际业务（客服支持）的快速学习理解，并以此为切入点，激发正式面试中更深入的探讨与交流
+    - 行业/竞对/历史数据来源于互联网公开信息，公开财报以及Trip.com 官方网站，存在一定误差，图表使用Plotly + HTML/CSS制作
+    - 思维导图中大部分数字/权重为推断假设，使用基于JavaScript的代码可视化工具 - Mermaid制作，Draw.io美化 
+    - 候选人相关过往项目经历请点击以下链接下载
+    
+    ### 📎 附件下载
+    """, unsafe_allow_html=True)
+    
+    # 下载过往项目经历PDF文件
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        with open("亚马逊项目 - 配送站评分系统.pdf", "rb") as f:
+            pdf_bytes1 = f.read()
+        
+        st.download_button(
+            label="📥 下载亚马逊配送站评分系统项目",
+            data=pdf_bytes1,
+            file_name="亚马逊配送站评分系统项目.pdf",
+            mime="application/pdf"
+        )
+    
+    with col2:
+        with open("亚马逊项目 - 实时数据报表.pdf", "rb") as f:
+            pdf_bytes2 = f.read()
+        
+        st.download_button(
+            label="📥 下载亚马逊实时数据报表项目",
+            data=pdf_bytes2,
+            file_name="亚马逊实时数据报表项目.pdf",
+            mime="application/pdf"
+        )
+    
+    st.markdown("""
+    ### 📋 开发日志
+    <details>
+    <summary><strong>点击展开查看开发历史</strong></summary>
+    
+    **v3.0 (2025-09-27 更新)**
+    - ✨ 新增模拟客服工单系统：工单列表、数据分析、高频问题识别
+    - ✨ 新增用户数字旅程分析：基于Shapley Value归因模型的双端对比分析
+    - 🔧 数据准确性优化：基于实际验证调整各平台AI客服数据
+    - 🎨 界面结构优化：标签页重新排序，思维导图拆分为两个SVG文件
+    
+    **v2.0 (2025-09-25 更新)**
+    - ✨ 新增竞品分析模块：市场份额趋势、客服系统发展大事记、能力对比
+    - ✨ 新增预测性人力资源优化模块：智能排班系统、优化模型展示
+    - ✨ 新增AI客服升级路线图：项目进度管理、里程碑展示
+    - 🎨 界面优化：多标签页布局、统一配色方案、响应式设计
+    - 🔧 技术升级：从Mermaid迁移到Plotly，支持交互式图表
+    
+    **v1.0 (初始版本2025-09-23)**
+    - 基础思维导图展示
+    - 客服指标体系 + 客服渠道拆解 + 客服成本分析
+    
+    </details>
+    """, unsafe_allow_html=True)
+
+with tab2:
     show_market_share()
     st.markdown("---")
     show_timeline()
@@ -956,17 +967,430 @@ with tab1:
     </div>
     """, unsafe_allow_html=True)
 
-with tab2:
+with tab3:
     show_ai_roadmap()
 
-with tab3:
+with tab4:
     show_predictive_staffing()
 
-with tab4:
-    st.header("📊 客户满意度指标 + 客服渠道拆解 + 客服成本分析与优化")
+with tab5:
+    # st.header("📋 模拟客服工单系统 - 数据分析界面")
+    
+    # 创建标签页
+    ticket_tab1, ticket_tab2, ticket_tab3 = st.tabs(["📝 模拟工单数据", "📊 探索性数据分析EDA", "🎯 用户数字旅程分析"])
+    
+    with ticket_tab1:
+        # st.subheader("📝 模拟客服工单数据")
+        
+        # 模拟工单数据
+        import pandas as pd
+        import random
+        from datetime import datetime, timedelta
+        
+        # 生成模拟工单数据
+        random.seed(42)
+        n_tickets = 50
+        
+        user_ids = [f"U{random.randint(10000, 99999)}" for _ in range(n_tickets)]
+        member_levels = random.choices(['普通会员', '银卡会员', '金卡会员', '钻石会员'], weights=[40, 30, 20, 10], k=n_tickets)
+        ticket_numbers = [f"TK{random.randint(100000, 999999)}" for _ in range(n_tickets)]
+        
+        # 咨询原因分类
+        inquiry_reasons = random.choices([
+            '机票改签', '酒店预订', '支付问题', '账户登录', '退票申请',
+            '行程变更', '会员权益', '发票申请', '密码重置', '订单查询'
+        ], weights=[30, 20, 15, 10, 8, 7, 5, 3, 1, 1], k=n_tickets)
+        
+        # 机票改签的详细原因
+        flight_change_reasons = [
+            '改签费用不明确', '改签流程复杂', '无法在线改签', '改签规则不清晰',
+            '改签时间限制', '改签条件不符合', '改签失败', '改签后座位问题'
+        ]
+        
+        # 生成咨询原因
+        inquiry_details = []
+        for i in range(n_tickets):
+            reason = random.choice(inquiry_reasons)
+            if reason == '机票改签':
+                detail = random.choice(flight_change_reasons)
+            else:
+                detail = f"{reason}相关问题"
+            inquiry_details.append(detail)
+        
+        # 创建工单DataFrame
+        tickets_df = pd.DataFrame({
+            '用户ID': user_ids,
+            '会员等级': member_levels,
+            '工单号': ticket_numbers,
+            '咨询原因': inquiry_reasons,
+            '详细问题': inquiry_details,
+            '创建时间': [datetime.now() - timedelta(days=random.randint(0, 30)) for _ in range(n_tickets)],
+            '状态': random.choices(['待处理', '处理中', '已解决'], weights=[20, 30, 50], k=n_tickets)
+        })
+        
+        # 显示工单表格
+        st.dataframe(tickets_df, use_container_width=True)
+        
+        # 工单统计
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("总工单数", len(tickets_df))
+        with col2:
+            st.metric("待处理", len(tickets_df[tickets_df['状态'] == '待处理']))
+        with col3:
+            st.metric("处理中", len(tickets_df[tickets_df['状态'] == '处理中']))
+        with col4:
+            st.metric("已解决", len(tickets_df[tickets_df['状态'] == '已解决']))
+    
+    with ticket_tab2:
+        # st.subheader("📊 探索性数据分析EDA")
+        
+        # 咨询原因分析
+        st.markdown("### 🔍 咨询原因分布分析")
+        
+        # 统计咨询原因
+        reason_counts = tickets_df['咨询原因'].value_counts()
+        
+        # 创建饼图
+        fig_pie = go.Figure(data=[go.Pie(
+            labels=reason_counts.index,
+            values=reason_counts.values,
+            hole=0.3,
+            textinfo='label+percent',
+            textfont_size=12
+        )])
+        
+        fig_pie.update_layout(
+            title="咨询原因分布",
+            height=400
+        )
+        
+        st.plotly_chart(fig_pie, use_container_width=True)
+        
+        # 高频问题分析
+        st.markdown("### 📈 高频问题分析")
+        
+        # 统计详细问题
+        detail_counts = tickets_df['详细问题'].value_counts().head(10)
+        
+        # 创建柱状图
+        fig_bar = go.Figure(data=[go.Bar(
+            x=detail_counts.values,
+            y=detail_counts.index,
+            orientation='h',
+            marker_color='#0066CC',
+            text=detail_counts.values,
+            textposition='auto'
+        )])
+        
+        fig_bar.update_layout(
+            title="高频问题TOP10",
+            xaxis_title="工单数量",
+            yaxis_title="问题类型",
+            height=500
+        )
+        
+        st.plotly_chart(fig_bar, use_container_width=True)
+        
+        # 机票改签问题深度分析
+        st.markdown("### ✈️ 机票改签问题深度分析")
+        
+        # 筛选机票改签相关工单
+        flight_tickets = tickets_df[tickets_df['咨询原因'] == '机票改签']
+        
+        if len(flight_tickets) > 0:
+            # 改签问题细分
+            change_reason_counts = flight_tickets['详细问题'].value_counts()
+            
+            # 创建改签问题分析图
+            fig_change = go.Figure(data=[go.Bar(
+                x=change_reason_counts.index,
+                y=change_reason_counts.values,
+                marker_color='#FF6B6B',
+                text=change_reason_counts.values,
+                textposition='auto'
+            )])
+            
+            fig_change.update_layout(
+                title="机票改签问题细分分析",
+                xaxis_title="问题类型",
+                yaxis_title="工单数量",
+                height=400,
+                xaxis_tickangle=-45
+            )
+            
+            st.plotly_chart(fig_change, use_container_width=True)
+            
+            # 改签问题根本原因分析
+            st.markdown("#### 🎯 根本原因分析")
+            
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                st.markdown("""
+                **🔍 问题识别**
+                - 改签费用不明确：用户不知道具体费用
+                - 改签流程复杂：步骤过多，用户容易放弃
+                - 无法在线改签：系统限制，必须人工处理
+                - 改签规则不清晰：用户不理解政策
+                """)
+            
+            with col2:
+                st.markdown("""
+                **💡 优化建议**
+                - 优化改签费用展示：实时计算并清晰显示
+                - 简化改签流程：减少步骤，提高成功率
+                - 开放在线改签：允许用户自助操作
+                - 优化规则说明：用通俗语言解释政策
+                """)
+            
+            # 会员等级分析
+            st.markdown("#### 👥 会员等级分析")
+            
+            member_analysis = flight_tickets['会员等级'].value_counts()
+            
+            fig_member = go.Figure(data=[go.Bar(
+                x=member_analysis.index,
+                y=member_analysis.values,
+                marker_color=['#FFEAA7', '#DDA0DD', '#98FB98', '#F0E68C'],
+                text=member_analysis.values,
+                textposition='auto'
+            )])
+            
+            fig_member.update_layout(
+                title="改签问题会员等级分布",
+                xaxis_title="会员等级",
+                yaxis_title="工单数量",
+                height=300
+            )
+            
+            st.plotly_chart(fig_member, use_container_width=True)
+        
+        # 数据洞察总结
+        st.markdown("---")
+        st.markdown("### 💡 数据洞察总结")
+        
+        st.markdown("""
+        **🔍 关键发现**
+        - 机票改签是最高频问题，占工单总量的30%
+        - 改签费用不明确和流程复杂是主要痛点
+        - 普通会员改签问题最多，说明产品易用性有待提升
+        
+        **🎯 优化机会**
+        - 优化改签流程，减少人工介入
+        - 提升产品易用性，降低客服依赖
+        - 加强自助服务，提高问题解决率
+        
+        **💰 预期效果**
+        - 改签相关工单减少60%
+        - 客服成本降低25%
+        - 客户满意度提升15%
+        """)
+    
+    with ticket_tab3:
+        st.subheader("🎯 博弈论视角的Shapley Value归因模型")
+        
+        st.markdown("""
+        ### 🔍 分析目标
+        通过Shapley Value归因模型，分析用户在双端（网页端/APP端）的完整数字旅程，
+        识别导致用户最终联系客服的关键页面和交互环节。
+        """)
+        
+        # 用户旅程数据模拟
+        st.markdown("### 📱 用户数字旅程数据")
+        
+        # 模拟用户旅程数据
+        journey_data = {
+            '用户ID': ['U12345', 'U12345', 'U12345', 'U12345', 'U12345', 'U12345'],
+            '时间戳': ['09:00:00', '09:02:15', '09:05:30', '09:08:45', '09:12:00', '09:15:30'],
+            '页面/功能': ['首页', '机票搜索', '航班选择', '改签页面', '改签失败', '联系客服'],
+            '端类型': ['APP', 'APP', 'APP', 'APP', 'APP', 'APP'],
+            '操作类型': ['浏览', '搜索', '选择', '点击改签', '系统错误', '人工客服'],
+            '停留时长(秒)': [45, 120, 180, 300, 60, 0],
+            '是否成功': [True, True, True, False, False, True]
+        }
+        
+        journey_df = pd.DataFrame(journey_data)
+        st.dataframe(journey_df, use_container_width=True)
+        
+        # Shapley Value归因分析
+        st.markdown("### 🎯 Shapley Value归因分析")
+        
+        # 模拟Shapley Value结果
+        shapley_data = {
+            '页面/功能': ['改签页面', '航班选择', '机票搜索', '首页', '其他'],
+            'Shapley Value': [0.45, 0.25, 0.15, 0.10, 0.05],
+            '归因解释': [
+                '改签页面设计复杂，用户无法完成操作',
+                '航班信息展示不清晰，用户选择困难',
+                '搜索条件设置复杂，用户容易出错',
+                '首页引导不明确，用户路径混乱',
+                '其他因素影响'
+            ]
+        }
+        
+        shapley_df = pd.DataFrame(shapley_data)
+        
+        # 创建Shapley Value归因图
+        fig_shapley = go.Figure(data=[go.Bar(
+            x=shapley_df['Shapley Value'],
+            y=shapley_df['页面/功能'],
+            orientation='h',
+            marker_color=['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7'],
+            text=shapley_df['Shapley Value'],
+            textposition='auto',
+            hovertemplate='<b>%{y}</b><br>Shapley Value: %{x}<br>%{customdata}<extra></extra>',
+            customdata=shapley_df['归因解释']
+        )])
+        
+        fig_shapley.update_layout(
+            title="Shapley Value归因分析 - 导致客服咨询的关键因素",
+            xaxis_title="Shapley Value (归因权重)",
+            yaxis_title="页面/功能",
+            height=400
+        )
+        
+        st.plotly_chart(fig_shapley, use_container_width=True)
+        
+        # 双端对比分析
+        st.markdown("### 📱 双端对比分析")
+        
+        # 模拟双端数据
+        platform_data = {
+            '端类型': ['APP端', '网页端', 'APP端', '网页端', 'APP端', '网页端'],
+            '问题页面': ['改签页面', '改签页面', '航班选择', '航班选择', '支付页面', '支付页面'],
+            '问题类型': ['流程复杂', '按钮不明显', '信息不清晰', '加载缓慢', '支付失败', '支付失败'],
+            '影响权重': [0.35, 0.30, 0.20, 0.15, 0.10, 0.08]
+        }
+        
+        platform_df = pd.DataFrame(platform_data)
+        
+        # 创建双端对比图
+        fig_platform = go.Figure()
+        
+        # APP端数据
+        app_data = platform_df[platform_df['端类型'] == 'APP端']
+        fig_platform.add_trace(go.Bar(
+            name='APP端',
+            x=app_data['问题页面'],
+            y=app_data['影响权重'],
+            marker_color='#0066CC',
+            text=app_data['影响权重'],
+            textposition='auto'
+        ))
+        
+        # 网页端数据
+        web_data = platform_df[platform_df['端类型'] == '网页端']
+        fig_platform.add_trace(go.Bar(
+            name='网页端',
+            x=web_data['问题页面'],
+            y=web_data['影响权重'],
+            marker_color='#FF6B6B',
+            text=web_data['影响权重'],
+            textposition='auto'
+        ))
+        
+        fig_platform.update_layout(
+            title="双端问题页面对比分析",
+            xaxis_title="问题页面",
+            yaxis_title="影响权重",
+            barmode='group',
+            height=400
+        )
+        
+        st.plotly_chart(fig_platform, use_container_width=True)
+        
+        # 具体问题分析
+        st.markdown("### 🔧 具体问题分析")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("""
+            **📱 APP端主要问题**
+            - **改签页面流程复杂** (权重35%)
+              - 步骤过多，用户容易放弃
+              - 界面元素过多，用户困惑
+            - **航班选择信息不清晰** (权重20%)
+              - 价格信息展示不突出
+              - 时间信息对比困难
+            - **支付页面失败率高** (权重10%)
+              - 支付流程中断
+              - 错误提示不明确
+            """)
+        
+        with col2:
+            st.markdown("""
+            **💻 网页端主要问题**
+            - **改签按钮不明显** (权重30%)
+              - 按钮位置不突出
+              - 颜色对比度不够
+            - **航班选择加载缓慢** (权重15%)
+              - 页面响应时间长
+              - 用户体验差
+            - **支付页面失败率高** (权重8%)
+              - 兼容性问题
+              - 网络连接不稳定
+            """)
+        
+        # 优化建议
+        st.markdown("### 💡 基于归因分析的优化建议")
+        
+        st.markdown("""
+        **🎯 高优先级优化 (Shapley Value > 0.3)**
+        1. **改签页面重构**
+           - 简化改签流程，减少步骤
+           - 优化界面设计，突出关键信息
+           - 增加进度指示器
+        
+        2. **航班选择页面优化**
+           - 重新设计信息展示布局
+           - 增加价格对比功能
+           - 优化时间选择交互
+        
+        **🔧 中优先级优化 (Shapley Value 0.1-0.3)**
+        3. **搜索页面改进**
+           - 简化搜索条件设置
+           - 增加智能推荐
+           - 优化搜索结果展示
+        
+        4. **首页引导优化**
+           - 增加改签功能入口
+           - 优化用户路径引导
+           - 增加帮助提示
+        
+        **📊 预期效果**
+        - 改签成功率提升40%
+        - 客服咨询量减少50%
+        - 用户满意度提升25%
+        - 双端体验一致性提升
+        """)
+        
+        # 技术实现说明
+        st.markdown("---")
+        st.markdown("### 🔬 技术实现说明")
+        
+        st.markdown("""
+        **Shapley Value归因模型原理**
+        - 基于博弈论，公平分配每个因素对最终结果的贡献
+        - 考虑因素间的交互效应，避免简单线性归因
+        - 适用于多因素复杂系统的归因分析
+        
+        **数据收集维度**
+        - 用户行为轨迹：页面访问、点击、停留时间
+        - 交互事件：按钮点击、表单填写、错误发生
+        - 系统状态：页面加载时间、错误日志、性能指标
+        - 用户属性：设备类型、网络环境、使用习惯
+        
+        **模型优势**
+        - 客观性：基于数学原理，避免主观判断
+        - 完整性：考虑所有可能的影响因素组合
+        - 可解释性：每个因素的贡献度清晰可量化
+        """)
+
+with tab6:
     st.markdown(f"""
-
-
+    ### 📊 客户满意度指标 + 客服渠道拆解 + 客服成本分析与优化
     """, unsafe_allow_html=True)
     # 加载两个SVG文件
     with open("pic1.svg","r",encoding="utf-8") as f:
@@ -976,6 +1400,7 @@ with tab4:
     with open("pic2.svg","r",encoding="utf-8") as f:
         svg_code2 = f.read()
     st.components.v1.html(svg_code2, height=550, scrolling=True)
+
 
 
 
